@@ -1,4 +1,4 @@
-# last modified 17 Februrary 2009 by J. Fox
+# last modified 26 December 2010 by J. Fox
 
 CoxZPH <- function(){
 	.activeModel <- ActiveModel()
@@ -23,7 +23,7 @@ CoxDfbetas <- function(){ # works for survreg models as well
 	doItAndPrint(command)
 	command <- if (coxphP())
 			paste("colnames(.dfbetas) <- names(coef(", ActiveModel(), "))", sep="")
-		else paste("colnames(.dfbetas) <- colnames(summary(", ActiveModel(), ")$table)", sep="")
+		else paste("colnames(.dfbetas) <- rownames(summary(", ActiveModel(), ")$table)", sep="")
 	doItAndPrint(command)
 	ncol <- ncol(.dfbetas)
 	doItAndPrint(paste(".mfrow <- par(mfrow = mfrow(", ncol, "))", sep=""))
@@ -60,7 +60,7 @@ MartingalePlots <- function(){
 	doItAndPrint(command)
 	doItAndPrint('.residuals <- residuals(.NullModel, type="martingale")')
 	command <- paste(".X <- padNA(model.matrix(", .activeModel, 
-		")[, -1, drop=FALSE], residuals(", .activeModel, "))", sep="")
+		"), residuals(", .activeModel, "))", sep="")
 	doItAndPrint(command)
 	coefs <- names(coef(eval(parse(text=.activeModel))))
 	ncoef <- length(coefs)
