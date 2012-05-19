@@ -17,8 +17,8 @@ and a variety of diagnostics, tests, and displays.
 \tabular{ll}{
 Package: \tab RcmdrPlugin.survival\cr
 Type: \tab Package\cr
-Version: \tab 1.0-1\cr
-Date: \tab 2011-08-03\cr
+Version: \tab 1.0-2\cr
+Date: \tab 2012-05-19\cr
 License: \tab GPL (>= 2)\cr
 LazyLoad: \tab yes\cr
 }
@@ -34,6 +34,12 @@ John Fox
 
 Maintainer: John Fox <jfox@mcmaster.ca>
 }
+
+\references{
+	John Fox, Marilia Sa Carvalho (2012).
+    The RcmdrPlugin.survival Package: Extending the R Commander Interface to Survival Analysis.
+    \emph{Journal of Statistical Software}, 49(7), 1-32.
+} 
 
 \section{Acknowledgments}{
 I am grateful to Marilia Sa Carvalho, FIOCRUZ, Rio de Janeiro, Brazil, for many comments and suggestions, 
