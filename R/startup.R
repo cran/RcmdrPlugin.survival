@@ -1,25 +1,20 @@
-# last modified 2011-07-05
-
-#.First.lib <- function(libname, pkgname){
-#    if (!interactive()) return()
-#    Rcmdr <- options()$Rcmdr
-#    plugins <- Rcmdr$plugins
-#    if ((!pkgname %in% plugins) && !getRcmdr("autoRestart")) {
-#        Rcmdr$plugins <- c(plugins, pkgname)
-#        options(Rcmdr=Rcmdr)
-#        closeCommander(ask=FALSE, ask.save=TRUE)
-#        Commander()
-#        }
-#    }
+# last modified 2013-01-13
 
 .onAttach <- function(libname, pkgname){
-	if (!interactive()) return()
-	Rcmdr <- options()$Rcmdr
-	plugins <- Rcmdr$plugins
-	if ((!pkgname %in% plugins) && !getRcmdr("autoRestart")) {
-		Rcmdr$plugins <- c(plugins, pkgname)
-		options(Rcmdr=Rcmdr)
-		closeCommander(ask=FALSE, ask.save=TRUE)
-		Commander()
-	}
+    if (!interactive()) return()
+    Rcmdr <- options()$Rcmdr
+    plugins <- Rcmdr$plugins
+    if (!pkgname %in% plugins) {
+        Rcmdr$plugins <- c(plugins, pkgname)
+        options(Rcmdr=Rcmdr)
+        if("package:Rcmdr" %in% search()) {
+            if(!getRcmdr("autoRestart")) {
+                closeCommander(ask=FALSE, ask.save=TRUE)
+                Commander()
+            }
+        }
+        else {
+            Commander()
+        }
+    }
 }
