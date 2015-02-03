@@ -1,4 +1,4 @@
-# last modified 2013-01-10 by J. Fox
+# last modified 2015-02-03 by J. Fox
 
 #Survfit <-
 #	function(){
@@ -201,7 +201,7 @@
 #}
 
 Survfit <- function(){
-	require(survival)
+	# require(survival)
 	defaults <- list(time1=NULL, time2=NULL, event=NULL, strata=NULL, type="kaplan-meier", error="greenwood", 
 			survtype="default", detail="default", conftype="log", conf.int="default", lev=".95", markTime="1", 
 			quantiles=".25, .5, .75", subset=NULL)
@@ -318,7 +318,7 @@ Survfit <- function(){
 							'), title="', as.character(formula(.Survfit)[3]),
 							'", col=1:', nlevels,', lty=1:', nlevels, ', bty="n")', sep=""))
 		}
-		doItAndPrint(paste("quantile(.Survfit, quantiles=", quants, ")", sep=""))
+		doItAndPrint(paste("quantile(.Survfit, probs=", quants, ")", sep=""))
 		logger("remove(.Survfit)")
 		remove(.Survfit, envir=.GlobalEnv)
 		tkfocus(CommanderWindow())
