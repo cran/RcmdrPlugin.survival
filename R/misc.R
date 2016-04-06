@@ -1,4 +1,4 @@
-# last modified 29 June 2010 by J. Fox
+# last modified 2015-08-31 by J. Fox
 
 startStop <- function(time){
 	times <- na.omit(eval(parse(text=paste(ActiveDataSet(), '[,c("', time[1], '", "', time[2],'")]', sep=""))))
@@ -41,10 +41,30 @@ SurvivalData <- function(){
 			return()
 		}
 		event <- getSelection(eventBox)
-		if (length(event) == 0) {
-			errorCondition(recall=SurvivalData, message=gettext("You must select an event indicator.", 
-					domain="R-RcmdrPlugin.survival"), model=TRUE)
-			return()
+		survtype <- as.character(tclvalue(survtypeVariable))
+		if (survtype == "interval" && length(event) == 0){
+		  errorCondition(recall=SurvivalData, 
+		                 message=gettext("You must select an event indicator if censoring is 'interval'.", 
+		                                 domain="R-RcmdrPlugin.survival"))
+		  return()
+		}
+		if (survtype == "interval2" && length(event) != 0){
+		  errorCondition(recall=SurvivalData, 
+		                 message=gettext("You should not select an event indicator if censoring is 'interval2'.", 
+		                                 domain="R-RcmdrPlugin.survival"))
+		  return()
+		}
+		if (length(time) == 2 && (! survtype %in% c("interval", "interval2", "counting"))){
+		  errorCondition(recall=SurvivalData,
+		                 message=gettext("start-end times only for interval or counting-process censoring\nselect Interval, Interval type 2, or Counting process.",
+		                                 domain="R-RcmdrPlugin.survival"))
+		  return()
+		}
+		if (length(time) == 1 && survtype %in% c("interval", "interval2", "counting")){
+		  errorCondition(recall=SurvivalData,
+		                 message=gettext("start-end times required for interval or counting-process censoring.",
+		                                 domain="R-RcmdrPlugin.survival"))
+		  return()
 		}
 		strata <- getSelection(strataBox)
 		cluster <- getSelection(clusterBox)
@@ -55,8 +75,15 @@ SurvivalData <- function(){
 			command <- paste("attr(", activeDataSet, ', "time2") <- "', time2, '"', sep="")
 			doItAndPrint(command)
 		}
-		command <- paste("attr(", activeDataSet, ', "event") <- "', event, '"', sep="")
-		doItAndPrint(command)
+		if (length(event) > 0){
+  		command <- paste("attr(", activeDataSet, ', "event") <- "', event, '"', sep="")
+  		doItAndPrint(command)
+		}
+		if (length(survtype) > 0 && survtype != "default"){
+		  command <- paste("attr(", activeDataSet, ', "survtype") <- "', survtype, '"', sep="")
+		  doItAndPrint(command)
+		}
+		
 		if (length(strata) > 0){
 			command <- paste("attr(", activeDataSet, ', "strata") <- c(', paste(paste('"', strata, '"', sep=""), collapse=","), ')', sep="")
 			doItAndPrint(command)
@@ -68,7 +95,6 @@ SurvivalData <- function(){
 		tkfocus(CommanderWindow())
 	}
 	onRefresh <- function(type){
-#		type <- as.character(tclvalue(clusterButtonsVariable))
 		vars <- if (type == "all") Variables() else Factors()
 		tkdelete(clusterBox$listbox, "0", "end")
 		for (var in vars) tkinsert(clusterBox$listbox, "end", var)
@@ -81,8 +107,12 @@ SurvivalData <- function(){
 	survFrame <- tkframe(top)
 	timeBox <- variableListBox(survFrame, NumericOrDate(), title=gettext("Time or start/end times\n(select one or two)", 
 			domain="R-RcmdrPlugin.survival"), selectmode="multiple")
-	eventBox <- variableListBox(survFrame, Numeric(), title=gettext("Event indicator\n(select one)", 
+	eventBox <- variableListBox(survFrame, Variables(), title=gettext("Event indicator\n(select one)", 
 			domain="R-RcmdrPlugin.survival"))
+	radioButtons(survFrame, name="survtype",
+	             buttons=c("default", "right", "left", "interval", "interval2", "counting"),
+	             labels=gettext(c("Default", "Right", "Left", "Interval", "Interval type 2", "Counting process")),
+	             initialValue="default", title=gettext("Type of Censoring", domain="R-RcmdrPlugin.survival"))
 	strataBox <- variableListBox(survFrame, Factors(), title=gettext("Strata\n(select zero or more)", 
 			domain="R-RcmdrPlugin.survival"), initialSelection=-1, selectmode="multiple")
 	cl.vars <- if (allVarsClusters()) Variables() else Factors()
@@ -96,13 +126,11 @@ SurvivalData <- function(){
 		title=gettext("Candidates for clusters", domain="R-RcmdrPlugin.survival"))
 	tkbind(factorsButton, "<Button-1>", function() onRefresh("factors"))
 	tkbind(allButton, "<Button-1>", function() onRefresh("all"))
-#	refresh <- tkbutton(survFrame, text=gettext("Refresh cluster candidates", domain="R-RcmdrPlugin.survival"),
-#		command=onRefresh)
-	tkgrid(getFrame(timeBox), labelRcmdr(survFrame, text="  "), getFrame(eventBox), sticky="nw")
+	tkgrid(getFrame(timeBox), labelRcmdr(survFrame, text="  "), getFrame(eventBox), 
+	       labelRcmdr(survFrame, text="  "), survtypeFrame, sticky="nw")
 	tkgrid(labelRcmdr(survFrame, text=""))
 	tkgrid(getFrame(strataBox), labelRcmdr(survFrame, text="  "), getFrame(clusterBox), sticky="nw")
 	tkgrid(labelRcmdr(survFrame, text=""), labelRcmdr(survFrame, text=""), clusterButtonsFrame, sticky="w")
-#	tkgrid(labelRcmdr(survFrame, text=""), labelRcmdr(survFrame, text=""), refresh, sticky="w")
 	tkgrid(survFrame, sticky="w")
 	tkgrid(labelRcmdr(top, text=""))
 	tkgrid(buttonsFrame, sticky="w")

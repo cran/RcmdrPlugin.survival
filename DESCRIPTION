@@ -1,13 +1,13 @@
 Package: RcmdrPlugin.survival
 Type: Package
-Title: R Commander Plug-in for the survival Package
-Version: 1.0-5
-Date: 2015-02-03
+Title: R Commander Plug-in for the 'survival' Package
+Version: 1.1-0
+Date: 2016-04-06
 Author: John Fox
 Maintainer: John Fox <jfox@mcmaster.ca>
-Depends: survival, date, stats
-Imports: Rcmdr
-Description: This package provides an R Commander plug-in for the survival
+Depends: R (>= 2.10), survival, date, stats
+Imports: Rcmdr (>= 2.2-1)
+Description: An R Commander plug-in for the survival
   package, with dialogs for Cox models, parametric survival regression models,
   estimation of survival curves, and testing for differences in survival
   curves, along with data-management facilities and a variety of tests, 
@@ -16,7 +16,10 @@ License: GPL (>= 2)
 LazyLoad: yes
 LazyData: yes
 RcmdrModels: coxph, survreg, coxph.penal
-Packaged: 2015-02-03 19:05:50 UTC; John Fox
-NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2015-02-03 20:16:31
+Repository/R-Forge/Project: rcmdrsurvplugin
+Repository/R-Forge/Revision: 88
+Repository/R-Forge/DateTimeStamp: 2016-04-06 14:27:55
+Date/Publication: 2016-04-06 18:11:48
+NeedsCompilation: no
+Packaged: 2016-04-06 15:05:20 UTC; rforge
