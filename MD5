@@ -1,6 +1,6 @@
-e4d3cb866d16925d74998bcf90938c1a *DESCRIPTION
+1272de1ccb8df7ef5818ddbeba564527 *DESCRIPTION
 0112cc2cb3de4a1f0b094a28932ac0ad *NAMESPACE
-5f504326df7e84b2e29e3bbea5d2b636 *NEWS
+2ff7b88e6d9cd3c496a819230e3b0d36 *NEWS
 4f46c972acee309f2ea891fb6becfdd6 *R/CoxModel.R
 91e5b310997a3a119d8924004c38a246 *R/Survdiff.R
 7822a1dcec47c73e75d865a7160ae2a0 *R/Survfit.R
@@ -14,8 +14,8 @@ a116d4c4d578ff9cb3e05d1c671b99d5 *R/plot.coxph.R
 32a1f7d6bcca9246998ce8bf76208027 *R/startup.R
 42a4535305cd56e5e8b11ba027927c1b *R/survregModel.R
 05a3a4d7d16ac962bc9a2b508e6bc081 *R/unfold.R
-1a68c2095b6a947448caf86360153bf8 *data/Dialysis.rda
-83b0e87ebb4ad87dafb692dd35d05093 *data/Rossi.rda
+26f709fcc601adc606843b77c5adaff4 *data/Dialysis.rda
+8827d88024018cad7672f084e3d5d777 *data/Rossi.rda
 93d1e0f2450b5e0ae93029c50a0d4225 *inst/CHANGES
 2c23f17f46946de15d8241bd8ed87276 *inst/CITATION
 ecf24aa7007b221ab8f8efcc18a01fb1 *inst/doc/v49i07.pdf
@@ -23,11 +23,11 @@ ecf24aa7007b221ab8f8efcc18a01fb1 *inst/doc/v49i07.pdf
 38d22961db7037577fb4ae2cdf6f05f8 *inst/po/es/LC_MESSAGES/R-RcmdrPlugin.survival.mo
 fa439320070fd7b953873affe0ae3ffc *inst/po/fr/LC_MESSAGES/R-RcmdrPlugin.survival.mo
 9baf5e327d80bf5953b7250072347c35 *inst/po/pt_BR/LC_MESSAGES/R-RcmdrPlugin.survival.mo
-7d97e8976e312cc9edb9c4df6277598d *inst/po/ru/LC_MESSAGES/R-RcmdrPlugin.survival.mo
+776ffbcb31c6944f28b69f1aee0d3632 *inst/po/ru/LC_MESSAGES/R-RcmdrPlugin.survival.mo
 acd4c825614277ca9115872743f771b9 *inst/po/sl/LC_MESSAGES/R-RcmdrPlugin.survival.mo
 d9c8f2044a4f5aa867f2fbf1e59d4269 *man/Dialysis.Rd
 c0434d320756001b5e8ea2bdb1aa460e *man/RcmdrPlugin.survival-internal.Rd
-5b63ff3e18beb5e13224d7d1872cf99a *man/RcmdrPlugin.survival-package.Rd
+571c70198529f84a848091b5eb3c15a9 *man/RcmdrPlugin.survival-package.Rd
 47d22fa3d77bfaa1ac23727f69949d57 *man/Rossi.Rd
 49e1a9e9eb7e67f939e2563af9b14462 *man/SurvivalData.Rd
 40c5185561c05b9fdfcabf38ee86ee9f *man/Unfold-dialog.Rd
