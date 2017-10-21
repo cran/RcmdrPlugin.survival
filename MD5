@@ -1,6 +1,6 @@
-1272de1ccb8df7ef5818ddbeba564527 *DESCRIPTION
+e81b282923f603479f480a513d9416dc *DESCRIPTION
 0112cc2cb3de4a1f0b094a28932ac0ad *NAMESPACE
-2ff7b88e6d9cd3c496a819230e3b0d36 *NEWS
+dbe68d87b151d2176fcdcec0a60ab8b0 *NEWS
 4f46c972acee309f2ea891fb6becfdd6 *R/CoxModel.R
 91e5b310997a3a119d8924004c38a246 *R/Survdiff.R
 7822a1dcec47c73e75d865a7160ae2a0 *R/Survfit.R
@@ -13,13 +13,14 @@ a116d4c4d578ff9cb3e05d1c671b99d5 *R/plot.coxph.R
 9930ae106cd021cea6b2f7b1f1a1ae14 *R/quantile.survfit.R
 32a1f7d6bcca9246998ce8bf76208027 *R/startup.R
 42a4535305cd56e5e8b11ba027927c1b *R/survregModel.R
-05a3a4d7d16ac962bc9a2b508e6bc081 *R/unfold.R
-26f709fcc601adc606843b77c5adaff4 *data/Dialysis.rda
-8827d88024018cad7672f084e3d5d777 *data/Rossi.rda
+2a39b70a501c5ec796d6a8a5c4ac7dac *R/unfold.R
+6e91d22e9308e0d901258b10993859ef *data/Dialysis.rda
+6c9bf81e21ae93cd0cd84313aeca61e1 *data/Rossi.rda
 93d1e0f2450b5e0ae93029c50a0d4225 *inst/CHANGES
 2c23f17f46946de15d8241bd8ed87276 *inst/CITATION
 ecf24aa7007b221ab8f8efcc18a01fb1 *inst/doc/v49i07.pdf
-6477db897324559dcdc6bcab3277c1bc *inst/etc/menus.txt
+b7e74784ab1a122e3810dd50bb8b3937 *inst/etc/menus.txt
+23d06e184393ae9ee7cdba994cec7819 *inst/etc/model-capabilities.txt
 38d22961db7037577fb4ae2cdf6f05f8 *inst/po/es/LC_MESSAGES/R-RcmdrPlugin.survival.mo
 fa439320070fd7b953873affe0ae3ffc *inst/po/fr/LC_MESSAGES/R-RcmdrPlugin.survival.mo
 9baf5e327d80bf5953b7250072347c35 *inst/po/pt_BR/LC_MESSAGES/R-RcmdrPlugin.survival.mo
@@ -27,7 +28,7 @@ fa439320070fd7b953873affe0ae3ffc *inst/po/fr/LC_MESSAGES/R-RcmdrPlugin.survival.
 acd4c825614277ca9115872743f771b9 *inst/po/sl/LC_MESSAGES/R-RcmdrPlugin.survival.mo
 d9c8f2044a4f5aa867f2fbf1e59d4269 *man/Dialysis.Rd
 c0434d320756001b5e8ea2bdb1aa460e *man/RcmdrPlugin.survival-internal.Rd
-571c70198529f84a848091b5eb3c15a9 *man/RcmdrPlugin.survival-package.Rd
+044edec3edc25b7b6e3c678edd9234d8 *man/RcmdrPlugin.survival-package.Rd
 47d22fa3d77bfaa1ac23727f69949d57 *man/Rossi.Rd
 49e1a9e9eb7e67f939e2563af9b14462 *man/SurvivalData.Rd
 40c5185561c05b9fdfcabf38ee86ee9f *man/Unfold-dialog.Rd
