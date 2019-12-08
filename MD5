@@ -1,9 +1,9 @@
-e81b282923f603479f480a513d9416dc *DESCRIPTION
+332de931ee863bce46def35fe294697f *DESCRIPTION
 0112cc2cb3de4a1f0b094a28932ac0ad *NAMESPACE
-dbe68d87b151d2176fcdcec0a60ab8b0 *NEWS
+a00f7c737ea6d341b385e12a9c8ef5f7 *NEWS
 4f46c972acee309f2ea891fb6becfdd6 *R/CoxModel.R
 91e5b310997a3a119d8924004c38a246 *R/Survdiff.R
-7822a1dcec47c73e75d865a7160ae2a0 *R/Survfit.R
+dcfbdfaa44574f50126bbd274250813c *R/Survfit.R
 161d5e44f1f756e1cf1f2ef235ea7c62 *R/diagnostics.R
 23889924f7971a309c4dbdeb4ab3de86 *R/globals.R
 aed2fc9fd61c6b5d20d027e175153da2 *R/listCoxModels.R
@@ -14,8 +14,8 @@ a116d4c4d578ff9cb3e05d1c671b99d5 *R/plot.coxph.R
 32a1f7d6bcca9246998ce8bf76208027 *R/startup.R
 42a4535305cd56e5e8b11ba027927c1b *R/survregModel.R
 2a39b70a501c5ec796d6a8a5c4ac7dac *R/unfold.R
-6e91d22e9308e0d901258b10993859ef *data/Dialysis.rda
-6c9bf81e21ae93cd0cd84313aeca61e1 *data/Rossi.rda
+c75fe28fab6444e96a68c71b9ac25f6a *data/Dialysis.rda
+fed672db5367e745bf6eb2fc0ecb43d1 *data/Rossi.rda
 93d1e0f2450b5e0ae93029c50a0d4225 *inst/CHANGES
 2c23f17f46946de15d8241bd8ed87276 *inst/CITATION
 ecf24aa7007b221ab8f8efcc18a01fb1 *inst/doc/v49i07.pdf
