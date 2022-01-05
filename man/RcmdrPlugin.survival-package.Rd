@@ -17,10 +17,10 @@ and a variety of diagnostics, tests, and displays.
 \tabular{ll}{
 Package: \tab RcmdrPlugin.survival\cr
 Type: \tab Package\cr
-Version: \tab 1.2-0\cr
-Date: \tab 2017-10-21\cr
+Version: \tab 1.2-2\cr
+Date: \tab 2021-12-31\cr
 Depends:\tab survival, date, stats\cr
-Imports:\tab Rcmdr (>= 2.2-1)\cr
+Imports:\tab Rcmdr (>= 2.4-0)\cr
 License: \tab GPL (>= 2)\cr
 LazyLoad: \tab yes\cr
 LazyData: \tab yes\cr
@@ -41,7 +41,7 @@ Maintainer: John Fox \email{jfox@mcmaster.ca}
 \references{
 	John Fox, Marilia Sa Carvalho (2012).
     The RcmdrPlugin.survival Package: Extending the R Commander Interface to Survival Analysis.
-    \emph{Journal of Statistical Software}, 49(7), 1-32.
+    \emph{Journal of Statistical Software}, 49(7), 1-32, \doi{10.18637/jss.v049.i07}.
 } 
 
 \section{Acknowledgments}{

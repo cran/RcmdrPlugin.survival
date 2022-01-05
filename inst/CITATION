@@ -9,12 +9,12 @@ citEntry(entry = "Article",
   volume       = "49",
   number       = "7",
   pages        = "1--32",
-  url          = "http://www.jstatsoft.org/v49/i07/",
+  doi          = "10.18637/jss.v049.i07",
 
   textVersion  =
   paste("John Fox, Marilia Sa Carvalho (2012).",
         "The RcmdrPlugin.survival Package: Extending the R Commander Interface to Survival Analysis.",
         "Journal of Statistical Software, 49(7), 1-32.",
-        "URL http://www.jstatsoft.org/v49/i07/.")
+        "DOI 10.18637/jss.v049.i07")
 )
 

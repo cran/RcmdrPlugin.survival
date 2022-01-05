@@ -32,7 +32,7 @@ in all federally funded clinics in Rio de Janeiro State, Brazil.
 \references{
 	John Fox, Marilia Sa Carvalho (2012).
     The RcmdrPlugin.survival Package: Extending the R Commander Interface to Survival Analysis.
-    \emph{Journal of Statistical Software}, 49(7), 1-32.
+    \emph{Journal of Statistical Software}, 49(7), 1-32. \doi{10.18637/jss.v049.i07}.
 } 
 
 \examples{
