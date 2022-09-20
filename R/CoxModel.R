@@ -114,6 +114,7 @@ CoxModel <- function(){
             ", data=", ActiveDataSet(), subset, ")", sep="")
         doItAndPrint(paste(modelValue, "<-", command))
         doItAndPrint(paste("summary(", modelValue, ")", sep=""))
+        insertRmdSection(paste0("Cox Proportional Hazards Model: ", modelValue, ": ", formula))
         activeModel(modelValue)
         tkfocus(CommanderWindow())
     }

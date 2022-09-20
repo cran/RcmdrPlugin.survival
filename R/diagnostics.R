@@ -1,114 +1,151 @@
-# last modified 2020-12-22 by J. Fox
+# last modified 2022-07-03 by J. Fox
 
 CoxZPH <- function(){
-	.activeModel <- ActiveModel()
-	ncoef <- justDoIt(paste0("length(coef(", .activeModel, "))"))
-	command <- paste(".CoxZPH <- cox.zph(", .activeModel, ") # test by terms", sep="")
-	doItAndPrint(command)
-	doItAndPrint(".CoxZPH")
-	nterms <- ncol(attr(terms(get(.activeModel, envir=.GlobalEnv)), "factors"))
-	if (nterms < ncoef){
-	command <- paste(".CoxZPH <- cox.zph(", .activeModel, ", terms=FALSE) # test by coefficients", sep="")
-    	doItAndPrint(command)
-    	doItAndPrint(".CoxZPH")
-	}
-	nvar <- ncol(.CoxZPH$y)
-	doItAndPrint(paste(".b <- coef(", .activeModel, ")", sep=""))
-	doItAndPrint(paste(".mfrow <- par(mfrow = mfrow(", nvar, "))", sep=""))
-	for (i in 1:nvar){
-		doItAndPrint(paste("plot(.CoxZPH[", i, "])", sep=""))
-		doItAndPrint(paste("abline(h=.b[", i, "], lty=3)", sep=""))
-		doItAndPrint(paste("abline(lm(.CoxZPH$y[,", i, "] ~ .CoxZPH$x), lty=4)", sep=""))
-	}
-	doItAndPrint("par(mfrow=.mfrow)")
-	logger("remove(.CoxZPH, .mfrow, .b)")
-	remove(.CoxZPH, .mfrow, .b, envir=.GlobalEnv)
-}
-
-CoxDfbetas <- function(){ # works for survreg models as well
-	command <- paste(".dfbetas <- as.matrix(residuals(", ActiveModel(), ', type="dfbetas"))', sep="")
-	doItAndPrint(command)
-	command <- if (coxphP())
-			paste("colnames(.dfbetas) <- names(coef(", ActiveModel(), "))", sep="")
-		else paste("colnames(.dfbetas) <- rownames(summary(", ActiveModel(), ")$table)", sep="")
-	doItAndPrint(command)
-	ncol <- ncol(.dfbetas)
-	doItAndPrint(paste(".mfrow <- par(mfrow = mfrow(", ncol, "))", sep=""))
-	for (col in colnames(.dfbetas)){
-		doItAndPrint(paste('plot(.dfbetas[,"', col, '"])', sep=""))
-		doItAndPrint("abline(h=0, lty=2)")
-	}
-	doItAndPrint("par(mfrow=.mfrow)")
-	logger("remove(.dfbetas, .mfrow)")
-	remove(.dfbetas, .mfrow, envir=.GlobalEnv)
+  doItAndPrint(paste0("testPropHazards(", ActiveModel(), ")"))
 }
 
 CoxDfbeta <- function(){ # works for survreg models as well
-	command <- paste(".dfbeta <- as.matrix(residuals(", ActiveModel(), ', type="dfbeta"))', sep="")
-	doItAndPrint(command)
-	if (coxphP()){
-		command <- paste("colnames(.dfbeta) <- names(coef(", ActiveModel(), "))", sep="")
-		doItAndPrint(command)
-	}
-	ncol <- ncol(.dfbeta)
-	doItAndPrint(paste(".mfrow <- par(mfrow = mfrow(", ncol, "))", sep=""))
-	for (col in colnames(.dfbeta)){
-		doItAndPrint(paste('plot(.dfbeta[,"', col, '"])', sep=""))
-		doItAndPrint("abline(h=0, lty=2)")
-	}
-	doItAndPrint("par(mfrow=.mfrow)")
-	logger("remove(.dfbeta, .mfrow)")
-	remove(.dfbeta, .mfrow, envir=.GlobalEnv)
+  doItAndPrint(paste0("plot(dfbeta(", ActiveModel(), "))"))
+  insertRmdSection(paste0("dfbeta Plots: ", ActiveModel()))
 }
 
-MartingalePlots <- function(){
-	.activeModel <- ActiveModel()
-	command <- paste(".NullModel <- update(", .activeModel, ", . ~ 1)", sep="")
-	doItAndPrint(command)
-	doItAndPrint('.residuals <- residuals(.NullModel, type="martingale")')
-	command <- paste(".X <- padNA(model.matrix(", .activeModel, 
-		"), residuals(", .activeModel, "))", sep="")
-	doItAndPrint(command)
-	coefs <- names(coef(eval(parse(text=.activeModel))))
-	ncoef <- length(coefs)
-	doItAndPrint(paste(".mfrow <- par(mfrow = mfrow(", ncoef, "))", sep=""))
-	activeDataSet <- ActiveDataSet()
-	for (coef in coefs){
-		x <- paste('.X[,"', coef, '"]', sep="")
-		command <- if (length(unique(eval(parse(text=x)))) < 10)
-				paste("plot(", x, ', .residuals, xlab="', coef,
-					'", ylab="Martingale residuals from null model")', sep="")
-			else paste("scatter.smooth(", x, ', .residuals, xlab="', coef,
-					'", ylab="Martingale residuals from null model", family="gaussian")', sep="")
-		doItAndPrint(command)
-		doItAndPrint(paste("abline(lm(.residuals ~ ", x, "), lty=2)", sep=""))
-	}
-	doItAndPrint("par(mfrow=.mfrow)")
-	logger("remove(.NullModel, .residuals, .X, .mfrow)")
-	remove(.residuals, .X, .mfrow, envir=.GlobalEnv)	
+CoxDfbetas <- function(){ # works for survreg models as well
+  doItAndPrint(paste0("plot(dfbetas(", ActiveModel(), "))"))
+  insertRmdSection(paste0("dfbetas Plots: ", ActiveModel()))
+}
+
+MartingalePlotsDialog <- function(){
+  doItAndPrint(paste0("MartingalePlots(", ActiveModel(), ")"))
 }
 
 PartialResPlots <- function(){
-	command <- paste(".residuals <- residuals(", ActiveModel(), ', type="partial")', sep="")
-	doItAndPrint(command)
-	command <- paste(".fitted <- predict(", ActiveModel(), ', type="terms")', sep="")
-	doItAndPrint(command)
-	terms <- colnames(.residuals)
-	nterms <- length(terms)
-	doItAndPrint(paste(".mfrow <- par(mfrow = mfrow(", nterms, "))", sep=""))
-	activeDataSet <- ActiveDataSet()
-	for (term in terms){
-		x <- paste('.fitted[,"', term, '"]', sep="")
-		command <- if (length(unique(eval(parse(text=x)))) < 10)
-				paste("plot(", x, ', .residuals[,"', term, '"], xlab="', term,
-					'", ylab="Partial residuals")', sep="")
-			else paste("scatter.smooth(", x, ', .residuals[,"', term, '"], xlab="',
-					term, '", ylab="Partial residuals", family="gaussian")', sep="")
-		doItAndPrint(command)
-		command <- paste("abline(lm(", '.residuals[,"', term, '"] ~ ', x, "))", sep="")
-		doItAndPrint(command)
-	}
-	doItAndPrint("par(mfrow=.mfrow)")
-	logger("remove(.residuals, .fitted, .mfrow)")
-	remove(.residuals, .fitted, .mfrow, envir=.GlobalEnv)	
+  doItAndPrint(paste0("crPlots(", ActiveModel(), ")"))
+}
+
+testPropHazards <- function (model, ...) UseMethod("testPropHazards")
+
+testPropHazards.coxph <- function(model, ...){
+  nterms <- ncol(attr(terms(model), "factors"))
+  b <- coef(model)
+  zph <- if (nterms < length(b)){
+    cox.zph(model, terms=FALSE)
+  } else {
+    cox.zph(model)
+  }
+  nvar <- ncol(zph$y)
+  save.mfrow <- par(mfrow = mfrow(nvar))
+  on.exit(par(save.mfrow))
+  for (i in 1:nvar){
+    plot(zph[i])
+    abline(h=b[i], lty=3)
+    abline(lm(zph$y[, i] ~ zph$x), lty=4)
+  }
+  zph
+}
+
+dfbeta.coxph <- function(model, ...){
+  dfbeta <- as.matrix(residuals(model, type="dfbeta"))
+  colnames(dfbeta) <- names(coef(model))
+  rownames(dfbeta) <- names(residuals(model))
+  class(dfbeta) <- c("dfbeta.coxph", class(dfbeta))
+  dfbeta
+}
+
+plot.dfbeta.coxph <- function(x, ...){
+  save.mfrow <- par(mfrow = mfrow(ncol(x)))
+  on.exit(par(save.mfrow))
+  for (col in colnames(x)){
+    plot(x[, col], ylab=col)
+    abline(h=0, lty=2)
+  }
+}
+
+dfbetas.coxph <- function(model, ...){
+  dfbetas <- as.matrix(residuals(model, type="dfbetas"))
+  colnames(dfbetas) <- names(coef(model))
+  rownames(dfbetas) <- names(residuals(model))
+  class(dfbetas) <- c("dfbetas.coxph", class(dfbetas))
+  dfbetas
+}
+
+plot.dfbetas.coxph <- function(x, ...){
+  save.mfrow <- par(mfrow = mfrow(ncol(x)))
+  on.exit(par(save.mfrow))
+  for (col in colnames(x)){
+    plot(x[, col], ylab=col)
+    abline(h=0, lty=2)
+  }
+}
+
+dfbeta.survreg <- function(model, ...){
+  nc <- length(coef(model))
+  dfbeta <- as.matrix(residuals(model, type="dfbeta"))[, 1:nc]
+  colnames(dfbeta) <- names(coef(model))
+  rownames(dfbeta) <- names(residuals(model))
+  class(dfbeta) <- c("dfbeta.survreg", class(dfbeta))
+  dfbeta
+}
+
+plot.dfbeta.survreg <- function(x, ...){
+  save.mfrow <- par(mfrow = mfrow(ncol(x)))
+  on.exit(par(save.mfrow))
+  for (col in colnames(x)){
+    plot(x[, col], ylab=col)
+    abline(h=0, lty=2)
+  }
+}
+
+dfbetas.survreg <- function(model, ...){
+  nc <- length(coef(model))
+  dfbetas <- as.matrix(residuals(model, type="dfbetas"))[, 1:nc]
+  colnames(dfbetas) <- names(coef(model))
+  rownames(dfbetas) <- names(residuals(model))
+  class(dfbetas) <- c("dfbetas.survreg", class(dfbetas))
+  dfbetas
+}
+
+plot.dfbetas.survreg <- function(x, ...){
+  save.mfrow <- par(mfrow = mfrow(ncol(x)))
+  on.exit(par(save.mfrow))
+  for (col in colnames(x)){
+    plot(x[, col], ylab=col)
+    abline(h=0, lty=2)
+  }
+}
+
+crPlots.coxph <- function(model, ...){
+  residuals <- residuals(model, type="partial")
+  fitted <- predict(model, type="terms")
+  terms <- colnames(residuals)
+  nterms <- length(terms)
+  save.mfrow <- par(mfrow = mfrow(nterms))
+  on.exit(par(save.mfrow))
+  for (term in terms){
+    x <- fitted[, term]
+    if (length(unique(x)) < 10)
+      plot(x, residuals[, term], xlab=term, ylab="Partial residuals")
+    else scatter.smooth(x, residuals[, term], xlab=term, 
+                        ylab="Partial residuals", family="gaussian")
+    abline(lm(residuals[, term] ~ x))
+  }
+}
+
+MartingalePlots <- function(model, ...) UseMethod("MartingalePlots")
+
+MartingalePlots.coxph <- function(model, ...){
+  NullModel <- update(model, . ~ 1)
+  residuals <- residuals(NullModel, type="martingale")
+  X <- padNA(model.matrix(model), residuals(model))
+  coefs <- names(coef(model))
+  ncoef <- length(coefs)
+  save.mfrow <- par(mfrow = mfrow(ncoef))
+  on.exit(par(save.mfrow))
+  for (coef in coefs){
+    x <- X[, coef]
+   if (length(unique(x)) < 10)
+      plot(x, residuals, xlab=coef, ylab="Martingale residuals (null model)")
+    else scatter.smooth(x, residuals, xlab=coef, 
+                        ylab="Martingale residuals (null model)", family="gaussian")
+    abline(lm(residuals ~ x), lty=2)
+  }                   
 }

@@ -95,6 +95,7 @@ Survfit <- function(){
         command <- paste("survfit(", formula, ', conf.type="', conftype, 
             '", conf.int=', lev, ', type="', type, '", error="', error,
             '", data=', ActiveDataSet(), subset, ")", sep="")
+        insertRmdSection(paste0("Estimate Survival Function: ", formula))
         doItAndPrint(paste(".Survfit <-", command))
         if (detail == "detailed") doItAndPrint("summary(.Survfit)") else doItAndPrint(".Survfit")
         conf.int <- if (conf.int == "default") "" else paste(", conf.int=", conf.int, sep="") 

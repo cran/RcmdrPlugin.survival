@@ -9,7 +9,7 @@
 \alias{highOrderTermsP}
 \alias{listCoxModels}
 \alias{listSurvregModels}
-\alias{MartingalePlots}
+\alias{MartingalePlotsDialog}
 \alias{myTkProgressBar}
 \alias{NumericOrDate}
 \alias{padNA}

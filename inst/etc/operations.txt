@@ -1,0 +1,28 @@
+         section.title argument assign
+
+MartingalePlots "Plot Martingale Residuals" 1 NA
+testPropHazards "Test Proportional Hazards" 1 NA
+termplot "Plot Terms in Survival Regression" 1 NA
+
+# exclusions
+
+abline "" NA NA
+as.date ""  NA NA
+as.Date "" NA NA
+as.matrix "" NA NA
+attr "" NA NA
+coef "" NA NA
+coxph "" NA NA
+data.frame "" NA NA
+legend "" NA NA
+padNA "" NA NA
+predict "" NA NA
+quantile "" NA NA
+residuals "" NA NA
+scatter.smooth "" NA NA
+survdiff "" NA NA
+survfit "" NA NA
+survreg "" NA NA
+update "" NA NA
+unfold "" NA NA
+

@@ -26,6 +26,6 @@ item	modelsGraphsMenu command		"Cox-model survival function..."		PlotCoxph					"
 item	modelsGraphsMenu command		"Plot terms in Cox model"				TermPlots					"coxphP() && !highOrderTermsP()" "packageAvailable('survival')"
 item	modelsGraphsMenu command		"Plot survival-regression dfbetas"		CoxDfbetas					"coxphP() || survregP()"	"packageAvailable('survival')"
 item	modelsGraphsMenu command		"Plot survival-regression dfbeta"		CoxDfbeta					"coxphP() || survregP()"	"packageAvailable('survival')"
-item	modelsGraphsMenu command		"Plot null Martingale residuals"		MartingalePlots				"coxphP()"					"packageAvailable('survival')"
+item	modelsGraphsMenu command		"Plot null Martingale residuals"		MartingalePlotsDialog				"coxphP()"					"packageAvailable('survival')"
 item	modelsGraphsMenu command		"Cox-model partial-residual plots" 		PartialResPlots				"coxphP()"					"packageAvailable('survival')"
 

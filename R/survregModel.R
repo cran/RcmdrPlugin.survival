@@ -121,6 +121,8 @@ survregModel <- function(){
             ", data=", ActiveDataSet(), subset, ")", sep="")
         doItAndPrint(paste(modelValue, "<-", command))
         doItAndPrint(paste("summary(", modelValue, ")", sep=""))
+        insertRmdSection(paste0("Parametric Survival Regression Model: ", 
+                                modelValue, ": ", formula))
         activeModel(modelValue)
         tkfocus(CommanderWindow())
     }

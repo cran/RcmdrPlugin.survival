@@ -46,6 +46,7 @@ Survdiff <- function(){
 		command <- paste("survdiff(", formula, ", rho=", rho,
 				', data=', ActiveDataSet(), subset, ")", sep="")
 		doItAndPrint(command)
+		insertRmdSection(paste0("Compare Survival Functions: ", formula))
 		tkfocus(CommanderWindow())
 	}
 	OKCancelHelp(helpSubject="survdiff", reset="Survdiff")

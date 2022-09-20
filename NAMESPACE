@@ -1,14 +1,25 @@
-# last modified 2015-08-26
+# last modified 2022-07-03
 
 import(stats, Rcmdr, survival, date)
 importFrom("grDevices", "palette")
-importFrom("graphics", "legend", "plot")
+importFrom("graphics", "legend", "plot", "abline", "par")
 importFrom(tcltk, tkfont.create, ttkprogressbar, tkwidget, setTkProgressBar, 
-    ttknotebook, tkadd, tkselect)
+    ttknotebook, tkadd, tkselect, tkbutton)
+importFrom(car, crPlots)
 
+export(crPlots, MartingalePlots, testPropHazards)
 exportPattern("^[^\\.]")
 
 S3method(plot, coxph)
 S3method(unfold, data.frame)
-
-
+S3method(testPropHazards, coxph)
+S3method(dfbeta, coxph)
+S3method(dfbeta, survreg)
+S3method(dfbetas, coxph)
+S3method(dfbetas, survreg)
+S3method(plot, dfbeta.coxph)
+S3method(plot, dfbetas.coxph)
+S3method(plot, dfbeta.survreg)
+S3method(plot, dfbetas.survreg)
+S3method(crPlots, coxph)
+S3method(MartingalePlots, coxph)
