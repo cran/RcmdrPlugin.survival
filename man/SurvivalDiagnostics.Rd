@@ -42,12 +42,14 @@ crPlots(model, ...)
 MartingalePlots(model, ...)
 \method{MartingalePlots}{coxph}(model, ...)
 
-testPropHazards(model, ...)
-\method{testPropHazards}{coxph}(model, ...)
+testPropHazards(model, test.terms = FALSE, plot.terms = FALSE, ...)
+\method{testPropHazards}{coxph}(model, test.terms = FALSE, plot.terms = FALSE, ...)
 }
 
 \arguments{
   \item{model, x}{a Cox regression or parametric survival regression model, as appropriate.}
+  \item{test.terms}{test proportional hazards by terms in the Cox model, rather than by coefficients (default is \code{FALSE}).}
+  \item{plot.terms}{diagnostic plots of proportional hazards by terms in the Cox model, rather than by coefficients (default is \code{FALSE}).}
   \item{\dots}{arguments to be passed down.}
 }
 

@@ -1,8 +1,8 @@
-# last modified 2022-07-03 by J. Fox
+# last modified 2022-10-27 by J. Fox
 
-CoxZPH <- function(){
-  doItAndPrint(paste0("testPropHazards(", ActiveModel(), ")"))
-}
+# CoxZPH <- function(){
+#   doItAndPrint(paste0("testPropHazards(", ActiveModel(), ")"))
+# }
 
 CoxDfbeta <- function(){ # works for survreg models as well
   doItAndPrint(paste0("plot(dfbeta(", ActiveModel(), "))"))
@@ -22,26 +22,32 @@ PartialResPlots <- function(){
   doItAndPrint(paste0("crPlots(", ActiveModel(), ")"))
 }
 
-testPropHazards <- function (model, ...) UseMethod("testPropHazards")
+testPropHazards <- function (model, test.terms = FALSE, plot.terms = FALSE, ...) UseMethod("testPropHazards")
 
-testPropHazards.coxph <- function(model, ...){
-  nterms <- ncol(attr(terms(model), "factors"))
-  b <- coef(model)
-  zph <- if (nterms < length(b)){
-    cox.zph(model, terms=FALSE)
-  } else {
-    cox.zph(model)
+testPropHazards.coxph <- function(model, test.terms = FALSE, plot.terms = FALSE, ...) {
+    plot(zph <- cox.zph(model, terms = plot.terms))
+    if (test.terms == plot.terms) {
+      print(zph)
+    } else {
+      print(cox.zph(model, terms = test.terms))
+    }
+    # nterms <- ncol(attr(terms(model), "factors"))
+    # b <- coef(model)
+    # zph <- if (nterms < length(b)){
+    #   cox.zph(model, terms=FALSE)
+    # } else {
+    #   cox.zph(model)
+    # }
+    # nvar <- ncol(zph$y)
+    # save.mfrow <- par(mfrow = mfrow(nvar))
+    # on.exit(par(save.mfrow))
+    # for (i in 1:nvar){
+    #   plot(zph[i])
+    #   abline(h=b[i], lty=3)
+    #   abline(lm(zph$y[, i] ~ zph$x), lty=4)
+    # }
+    # zph
   }
-  nvar <- ncol(zph$y)
-  save.mfrow <- par(mfrow = mfrow(nvar))
-  on.exit(par(save.mfrow))
-  for (i in 1:nvar){
-    plot(zph[i])
-    abline(h=b[i], lty=3)
-    abline(lm(zph$y[, i] ~ zph$x), lty=4)
-  }
-  zph
-}
 
 dfbeta.coxph <- function(model, ...){
   dfbeta <- as.matrix(residuals(model, type="dfbeta"))
