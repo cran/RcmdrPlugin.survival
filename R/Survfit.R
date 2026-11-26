@@ -114,7 +114,7 @@ Survfit <- function(){
                 #'", col=1:', nlevels,', lty=1:', nlevels, ', bty="n")', sep=""))
                 '), col=1:', nlevels,', lty=1:', nlevels, ', bty="n")', sep=""))
         }
-        doItAndPrint(paste("quantile(.Survfit, quantiles=", quants, ")", sep=""))
+        doItAndPrint(paste("quantile(.Survfit, probs=", quants, ")", sep=""))
         logger("remove(.Survfit)")
         remove(.Survfit, envir=.GlobalEnv)
         tkfocus(CommanderWindow())

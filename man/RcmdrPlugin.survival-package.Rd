@@ -23,7 +23,7 @@ The plug-in is tightly integrated with the \emph{R Commander} interface; see the
 \author{
 John Fox
 
-Maintainer: John Fox \email{jfox@mcmaster.ca}
+Maintainer: Manuel Munoz-Marquez \email{manuel.munoz@uca.es}
 }
 
 \references{

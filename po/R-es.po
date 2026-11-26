@@ -1,17 +1,20 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: RcmdrPlugin.survival 1.1-0\n"
-"POT-Creation-Date: 2015-08-27 11:50\n"
-"PO-Revision-Date: 2015-12-10 20:05+0100\n"
-"Last-Translator: Manuel Muñoz Márquez <r-uca@uca.es>\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-11-06 20:29+0100\n"
+"Last-Translator: Manuel Munoz-Marquez <manuel.munoz.marquez@gmail.com>\n"
 "Language-Team: R-UCA <r-uca@uca.es>\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 3.4.2\n"
+
+msgid "Lag covariates"
+msgstr "Retardo de covarianzas"
 
 msgid "Cox-Regression Model"
 msgstr "Modelo de regresión-Cox"
@@ -303,7 +306,7 @@ msgid "Variable to convert"
 msgstr "Variable a convertir"
 
 msgid "date"
-msgstr "fehca"
+msgstr "fecha"
 
 msgid "Date format"
 msgstr "Formato de fecha"
@@ -331,10 +334,10 @@ msgid "Survival data definition..."
 msgstr "Definición de los datos de supervivencia..."
 
 msgid "Convert wide to long data..."
-msgstr "Convertir ancho a largo de datos..."
+msgstr "Convertir datos de ancho a largo..."
 
 msgid "Survival data"
-msgstr "Datos supervivientes"
+msgstr "Datos de supervivencia"
 
 msgid "Cox regression model..."
 msgstr "Modelo de regresión de Cox..."
@@ -383,22 +386,31 @@ msgid "Interval"
 msgstr "Intervalo"
 
 msgid "Counting"
-msgstr "Contando"
+msgstr "Conteo"
+
+msgid "Counting process"
+msgstr "Proceso de conteo"
 
 msgid "Interval type 2"
 msgstr "Intervalo tipo 2"
 
 msgid "You must select an event indicator if censoring is 'interval'."
-msgstr "Debes seleccionar un indicador de eventos si la censura es 'intervalos'."
+msgstr ""
+"Debes seleccionar un indicador de eventos si la censura es 'intervalos'."
 
 msgid "You should not select an event indicator if censoring is 'interval2'."
-msgstr "No debes seleccionar un indicador de eventos si la censura es 'intervalo2'."
+msgstr ""
+"No debes seleccionar un indicador de eventos si la censura es 'intervalo2'."
 
 msgid "start-end times only for counting-process or interval censoring."
-msgstr "tiempo de inicio-final sólo para el proceso de conteo o censura de intervalos."
+msgstr ""
+"tiempo de inicio-final sólo para el proceso de conteo o censura de "
+"intervalos."
 
 msgid "start-end times required for counting-process or interval censoring."
-msgstr "tiempo de inicio-final requerido para el proceso de conteo o censura de intervalos."
+msgstr ""
+"tiempo de inicio-final requerido para el proceso de conteo o censura de "
+"intervalos."
 
 msgid ""
 "Strata\n"
@@ -415,3 +427,18 @@ msgstr "Detallado"
 
 msgid "Data"
 msgstr "Datos"
+
+msgid "Test Proportional Hazards"
+msgstr "Test de riesgos proporcionales"
+
+msgid "Coefficients"
+msgstr ""
+
+msgid "Terms"
+msgstr ""
+
+msgid "Test by"
+msgstr ""
+
+msgid "Plot by"
+msgstr ""

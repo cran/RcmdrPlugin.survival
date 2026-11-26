@@ -1,6 +1,6 @@
 "Project-Id-Version: RcmdrPlugin.survival 1.1-0\n"
-"Report-Msgid-Bugs-To: jfox@mcmaster.ca\n"
-"POT-Creation-Date: 2022-10-27 19:30\n"
+"Report-Msgid-Bugs-To: manuel.munoz@uca.es\n"
+"POT-Creation-Date: 2026-11-06 19:30\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -8,6 +8,8 @@
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "Lag covariates"
+msgstr ""
 
 msgid "Cox-Regression Model"
 msgstr ""
@@ -350,6 +352,9 @@ msgid "Interval"
 msgstr "" 
 
 msgid "Counting"
+msgstr ""
+
+msgid "Counting process"
 msgstr ""
 
 msgid "Interval type 2"
